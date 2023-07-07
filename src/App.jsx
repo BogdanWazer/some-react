@@ -3,15 +3,15 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 
-function User({ name, lastName, ...rest }) {
-  return (
-    <div>
-      <h1>{name}</h1>
-      <h2>{lastName}</h2>
-      <p>{JSON.stringify(rest)}</p>
-    </div>
-  );
+function User({ name, lastName, gender }) {
+  if (name && lastName) {
+    const salut = `Hello, ${gender === 'Man' ? 'Mr' : 'Ms'} ${name}`;
+    return name ? <h1>{salut}</h1> : <h1>No Data!</h1>;
+  } else {
+    return <h1>No Data!</h1>;
+  }
 }
+
 function App() {
   const variable = 'Alex';
 
@@ -33,6 +33,7 @@ function App() {
       name: 'Brian',
       channel: 'BrianChannel',
     },
+    gender: 'Man',
   };
 
   const user2 = {
