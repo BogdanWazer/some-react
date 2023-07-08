@@ -3,22 +3,24 @@ import reactLogo from './assets/react.svg';
 import viteLogo from '/vite.svg';
 import './App.css';
 
-function User({ name, lastName, gender }) {
-  if (name && lastName) {
-    const salut = `Hello, ${gender === 'Man' ? 'Mr' : 'Ms'} ${name}`;
-    return name ? <h1>{salut}</h1> : <h1>No Data!</h1>;
-  } else {
-    return <h1>No Data!</h1>;
-  }
-}
+const User = ({ firstName2 }) =>
+  (firstName2 && <h1>{firstName2}</h1>) || <p>No Data!</p>;
+
+const multiple = function sum(a, b) {
+  console.log(a + b);
+};
+
+multiple(5, 10);
+
+const multiple2 = (a, b) => {
+  return a + b + 5;
+};
+console.log(multiple2(5, 7));
 
 function App() {
-  const variable = 'Alex';
-
   const fruites = ['banana', 'apple', 'orange'];
 
   const [banana, ...restFruits] = fruites;
-
   console.log(fruites);
 
   const fruites2 = fruites.map(function (item, index) {
@@ -43,6 +45,7 @@ function App() {
 
   console.log(`User1:`, user);
   console.log(`User2:`, user2);
+
   const {
     name: firstName2,
     lastName,
@@ -51,17 +54,13 @@ function App() {
     bestFriend: { name: friendName },
   } = user;
 
-  const object = {
-    name: [variable],
-    fruit: [fruites[0]],
-  };
-
   const [count, setCount] = useState(0);
   return (
     <>
       <div>
         <User {...user} />
       </div>
+
       <div>
         <a href="#">
           Hello, {firstName2}. My city is {city}{' '}
